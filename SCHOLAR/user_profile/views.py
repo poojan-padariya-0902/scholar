@@ -80,3 +80,11 @@ def logout_view(request):
     logout(request)
     messages.success(request, 'You have been logged out successfully.')
     return redirect('index')
+
+def collages(request):
+
+    collages = College.objects.all().order_by('-id')
+    context = {
+        'collages': collages,
+    }  
+    return render(request, 'collages.html', context)
